@@ -9,7 +9,7 @@ module('the-example', {
     },
 
     teardown: function() {
-        //$('#main').empty();
+        $('#main').empty();
     }
 
 });
