@@ -1,0 +1,22 @@
+{
+    "name": "buster-qunit",
+    "version": "0.1",
+    "description": "Execute QUnit tests from buster.js",
+    "homepage": "",
+    "author": { "name": "Balazs Ree" },
+    "contributors": [{
+        "name": "Balazs Ree",
+        "email": "ree@greenfinity.hu",
+        "url": "http://greenfinity.hu"
+    }],
+    "main": "./lib/extension",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/reebalazs/buster-qunit.git"
+    },
+    "dependencies": {
+    },
+    "devDependencies": {
+        "buster": "*",
+    }
+}
