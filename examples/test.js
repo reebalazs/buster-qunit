@@ -40,9 +40,9 @@ test("Changes label", function() {
 test("Label option", function() {
 
     $('#the-node').example({
-        label: 'Bottlecap is awesome!'
+        label: 'Buster.js is awesome!'
     });
-    equal($('#the-node').text(), 'Bottlecap is awesome!');
+    equal($('#the-node').text(), 'Buster.js is awesome!');
 
     $('#the-node').example('destroy');
     equal($('#the-node').text(), 'The Node Text');
