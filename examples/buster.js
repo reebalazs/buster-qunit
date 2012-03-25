@@ -19,9 +19,7 @@ config["the.example"] = {
         'examples/source.js'
     ],
     tests: [
-        'lib/buster-qunit.js',
-        'examples/test.js',
-        'lib/buster-qunit-epilogue.js'
+        'examples/test.js'
     ]
 };
 
