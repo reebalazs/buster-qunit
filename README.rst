@@ -1,12 +1,26 @@
 
+============
 buster-qunit
 ============
 
 An adapter to enable running QUnit tests from buster.js.
 
+Installation
+============
+
+Installable now from git.
+
+If you have this package checked out to somewhere, you need to
+reference the ``lib/extension.js`` file with its relative path
+from ``buster.js``,
+like: ``require('../lib/extension.js')`` - adapted to your
+location. Also see: ``example/buster.js`` example configuration.
+
+When released later: npm (Node Package Manager)
+
 
 Compatibility
--------------
+=============
 
 A desirable goal would be to be able to run any QUnit test automatically, without require to modify them.
 
@@ -15,7 +29,7 @@ maintained in a way that they remain runnable in parallel both as a QUnit test, 
 
 
 1. Javascript dependencies
-..........................
+--------------------------
 
 QUnit tests run from a browser by visiting an html page, and this html contains `<script>` tags to load
 javascript. In buster, there is no such html. The scripts have to be defined from the `buster.js`
@@ -25,7 +39,7 @@ configuration file, as described in details by the buster documentation. This is
 
 
 2. HTML markup for tests
-........................
+------------------------
 
 In QUnit, there is a `<div id="main" />` tag in the template, which is the testing sandbox. It can contain an
 initial HTML, which every test can assume is cleaned up before they run. In buster, there is no such html, so
@@ -35,17 +49,17 @@ The tests can assume however that `#main` exists and is empty, before any test r
 
 
 Missing
--------
+=======
 
 1. Async not supported
-......................
+----------------------
 
 `start()`, `stop()` and `expect(n)` are not implemented. For most cases, you can use sinon.js's mock timers
 for the purpose and avoid writing async tests, or, convert your async tests to such tests.
 
 
 2. Asserts
-..........
+----------
 
 Some QUnit asserts may be missing. We add them as we discover this.
 
