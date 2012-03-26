@@ -8,29 +8,52 @@ An adapter to enable running QUnit tests from buster.js.
 Installation
 ============
 
-Installable now from git. You must have ``buster.js`` already installed.
+Since this is an extension of ``buster.js``, you must have ``buster.js`` already installed before we can
+begin.
 
-If you have this package checked out to somewhere, then instead of just requiring the package by its name, you
-need to reference the ``lib/extension.js`` file of this package with its relative path from your ``buster.js``
-configuration, like: ``extensions: [require('../lib/extension.js')]`` - where the path should be adapted to
-your location. Also see: ``example/buster.js`` example configuration.
+To use the development version of this package, simply check it out from git somewhere in your project.
 
-When released later: installable with the ``npm`` package manager, and usable like ``extensions:
-[require('buster-qunit')]`` from ``buster.js``.
+To use a released version, the ``npm`` package manager can be used to install the package.
+
+
+Usage
+=====
+
+You will need to create a ``buster.js`` configuration file for your qunit tests. Take a look at
+the ``examples`` folder and use the ``buster.js`` file you find there, as a template. (XXX More explanation
+needed here.)
+
+``buster-qunit`` that you have just installed, will need to be referenced from the ``buster.js`` configuration
+file.
+
+If you are using a development version of this package, and you have it checked out to a location, then you
+have to reference the ``lib/extension.js`` file with its relative path from your ``buster.js`` configuration::
+    
+    ...
+    extensions: [require('../lib/extension.js')]
+    
+- where the path should be adapted to your location.
+
+To use a released version, installed with ``npm``::
+
+    ...
+    extensions : [require('buster-qunit')]
+    
+will have to be used from ``buster.js``.
 
 
 Compatibility
 =============
 
-A desirable goal would be to enable us to run any existing QUnit test transparently from ``buster.js``, without
-any need to modify the QUnit tests.
+A desirable goal would be to enable us to run any existing QUnit test transparently from ``buster.js``,
+without any need to modify the QUnit tests.
 
 Right now, a few manual conversion steps have to be done to have QUnit tests running with this adapter.
 Following this, the tests can be maintained in a way that they remain runnable in parallel as a QUnit
 test, and from ``buster.js`` as well.
 
 
-1. Defining which javascript to load
+1. Defining which Javascript to load
 ------------------------------------
 
 QUnit tests are run from a browser by visiting an HTML page, and this HTML contains ``<script>`` tags to load
