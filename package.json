@@ -1,6 +1,6 @@
 {
     "name": "buster-qunit",
-    "version": "0.1",
+    "version": "0.1.0",
     "description": "Execute QUnit tests from buster.js",
     "homepage": "",
     "author": { "name": "Balazs Ree" },
@@ -17,6 +17,6 @@
     "dependencies": {
     },
     "devDependencies": {
-        "buster": "*",
+        "buster": "*"
     }
 }
