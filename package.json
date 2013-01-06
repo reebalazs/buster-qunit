@@ -15,8 +15,12 @@
         "url": "git://github.com/reebalazs/buster-qunit.git"
     },
     "dependencies": {
+        "buster": "latest"
     },
     "devDependencies": {
-        "buster": "*"
+        "buster-configuration": "*"
+    },
+    "scripts": {
+        "test": "node run-tests"
     }
 }
