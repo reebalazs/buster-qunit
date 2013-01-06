@@ -1,4 +1,5 @@
 #!/usr/bin/env node
 
 require('./lib/buster-qunit');
+require('./test/extension-test');
 require('./test/buster-qunit-test');
