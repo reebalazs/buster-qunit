@@ -9,8 +9,12 @@ config.Node = {
 };
 
 config.Browser = {
+    rootPath: '..',
     env: 'browser',
+    libs: [
+        'lib/buster-qunit.js'
+    ],
     tests: [
-        'buster-qunit-test.js'
+        'test/buster-qunit-test.js'
     ]
 };
