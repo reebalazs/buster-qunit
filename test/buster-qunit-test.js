@@ -107,8 +107,24 @@ buster.testCase('buster-qunit', {
             assert.equals(c.tearDown, this.qunit.qunitTearDown);
             assert.keys(c.nomodule, ['test1']);
             assert.equals(c.nomodule.test1, 'PROXIED[T1]');
-        }
+        },
 
+        'with more tests': function () {
+            var g = this.global;
+            g.module('M', {});
+            g.test('test1', 'T1');
+            g.test('test2', 'T2');
+            g.test('test3', 'T3');
+            var c = this.qunit.testCase;
+            assert.keys(c, ['setUp', 'tearDown', 'M']);
+            assert.equals(c.setUp, this.qunit.qunitSetUp);
+            assert.equals(c.tearDown, this.qunit.qunitTearDown);
+            assert.keys(c.M, ['test1', 'test2', 'test3']);
+            assert.equals(c.M.test1, 'PROXIED[T1]');
+            assert.equals(c.M.test2, 'PROXIED[T2]');
+            assert.equals(c.M.test3, 'PROXIED[T3]');
+        }
+ 
 
     }
 
