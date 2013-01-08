@@ -75,11 +75,41 @@ buster.testCase('buster-qunit', {
             g.test('test1', 'T1');
             var c = this.qunit.testCase;
             assert.keys(c, ['setUp', 'tearDown', 'M']);
-            assert.isFunction(c.setUp);
-            assert.isFunction(c.tearDown);
+            assert.equals(c.setUp, this.qunit.qunitSetUp);
+            assert.equals(c.tearDown, this.qunit.qunitTearDown);
             assert.keys(c.M, ['test1']);
             assert.equals(c.M.test1, 'PROXIED[T1]');
+        },
+    
+        'with setup and teardown': function () {
+            var g = this.global;
+            g.module('M', {
+                setup: 'SETUP',
+                teardown: 'TEARDOWN'
+            });
+            g.test('test1', 'T1');
+            var c = this.qunit.testCase;
+            assert.keys(c, ['setUp', 'tearDown', 'M']);
+            assert.equals(c.setUp, this.qunit.qunitSetUp);
+            assert.equals(c.tearDown, this.qunit.qunitTearDown);
+            assert.keys(c.M, ['setUp', 'tearDown', 'test1']);
+            assert.equals(c.M.setUp, 'PROXIED[SETUP]');
+            assert.equals(c.M.tearDown, 'PROXIED[TEARDOWN]');
+            assert.equals(c.M.test1, 'PROXIED[T1]');
+        },
+
+        'without module': function () {
+            var g = this.global;
+            g.test('test1', 'T1');
+            var c = this.qunit.testCase;
+            assert.keys(c, ['setUp', 'tearDown', 'nomodule']);
+            assert.equals(c.setUp, this.qunit.qunitSetUp);
+            assert.equals(c.tearDown, this.qunit.qunitTearDown);
+            assert.keys(c.nomodule, ['test1']);
+            assert.equals(c.nomodule.test1, 'PROXIED[T1]');
         }
+
+
     }
 
 });
