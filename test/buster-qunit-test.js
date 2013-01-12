@@ -146,13 +146,57 @@ buster.testCase('buster-qunit', {
 
     'assertion': {
 
-        '//ok': {
+        'ok': {
+            '': function () {
+                var g = this.global;
+                this.assert = this.stub(buster, 'assert', function () {});
+                this.qunit.ok(true);
+                assert.equals(this.assert.callCount, 1);
+                assert(this.assert.calledWith(true));
+            },
+            tearDown: function () {
+                this.assert.restore();
+            }
         },
 
-        '//equal': {
+       'equal': {
+            'if matches': function () {
+                var g = this.global;
+                this.assert = this.stub(buster, 'assert', function () {});
+                this.qunit.equal(1, 1);
+                assert.equals(this.assert.callCount, 1);
+                assert(this.assert.calledWith(true));
+            },
+            'if not matches': function () {
+                var g = this.global;
+                this.assert = this.stub(buster, 'assert', function () {});
+                this.qunit.equal(2, 3);
+                assert.equals(this.assert.callCount, 1);
+                assert(this.assert.calledWith(false));
+            },
+            'if matches and not the same': function () {
+                var g = this.global;
+                this.assert = this.stub(buster, 'assert', function () {});
+                this.qunit.equal(2, '2');
+                assert.equals(this.assert.callCount, 1);
+                assert(this.assert.calledWith(true));
+            },
+            tearDown: function () {
+                this.assert.restore();
+            }
         },
 
-        '//deepEqual': {
+        'deepEqual': {
+            '': function () {
+                var g = this.global;
+                this.equals = this.stub(buster.assert, 'equals', function () {});
+                this.qunit.deepEqual('THIS', 'THAT');
+                assert.equals(this.equals.callCount, 1);
+                assert(this.equals.calledWith('THIS', 'THAT'));
+            },
+            tearDown: function () {
+                this.equals.restore();
+            }
         },
 
         'raises': {
@@ -182,13 +226,28 @@ buster.testCase('buster-qunit', {
     },
     'async': {
 
-        '//start': {
+        'start': function() {
+            // not implemented
+            var qunit = this.qunit;
+            assert.exception(function () {
+                qunit.start();
+            });
         },
 
-        '//stop': {
+        'stop': function () {
+            // not implemented
+            var qunit = this.qunit;
+            assert.exception(function () {
+                qunit.stop();
+            });
         },
 
-        '//expect': {
+        'expect': function () {
+            // not implemented
+            var qunit = this.qunit;
+            assert.exception(function () {
+                qunit.except(10);
+            });
         }
 
     }
