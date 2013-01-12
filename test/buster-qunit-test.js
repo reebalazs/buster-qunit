@@ -137,12 +137,39 @@ buster.testCase('buster-qunit', {
                 assert(this.testCase.calledWith('qunit', this.qunit.testCase));
                 
             },
-            'tearDown': function () {
+            tearDown: function () {
                 this.testCase.restore();
             }
         }
 
+    },
+
+    'assertion': {
+
+        'raises': {
+            '': function () {
+                var g = this.global;
+                this.exception = this.stub(assert, 'exception');
+                this.qunit.raises('F', '12345', 'message');
+                this.exception.restore();
+                assert.equals(this.exception.callCount, 1);
+                var args = this.exception.args[0];
+                assert.equals(args[0], 'F');
+                assert.equals(args[2], 'message');
+                assert.equals(typeof args[1], 'function');
+                var startswith = args[1];
+                refute(startswith({message: ''}));
+                refute(startswith({message: '1234'}));
+                refute(startswith({message: '123X5'}));
+                assert(startswith({message: '12345'}));
+                assert(startswith({message: '123456'}));
+                refute(startswith({message: '1234X6'}));
+                assert(startswith({message: '123456789'}));
+            },
+            tearDown: function () {
+                this.exception.restore();
+            }
+        }
 
     }
-
 });
