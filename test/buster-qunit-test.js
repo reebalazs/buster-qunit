@@ -128,7 +128,18 @@ buster.testCase('buster-qunit', {
         '//makes proxied methods': function () {
         },
 
-        '//processing': function () {
+        'processing': {
+            '': function () {
+                var g = this.global;
+                this.qunit.testCase = 'TESTCASE';
+                this.testCase = this.stub(buster, 'testCase');
+                g._buster_qunit_process();
+                assert(this.testCase.calledWith('qunit', this.qunit.testCase));
+                
+            },
+            'tearDown': function () {
+                this.testCase.restore();
+            }
         }
 
 
