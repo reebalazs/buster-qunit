@@ -1,8 +1,8 @@
 {
     "name": "buster-qunit",
-    "version": "0.1.0",
+    "version": "0.0.1",
     "description": "Execute QUnit tests from buster.js",
-    "homepage": "",
+    "homepage": "https://github.com/reebalazs/buster-qunit",
     "author": { "name": "Balazs Ree" },
     "contributors": [{
         "name": "Balazs Ree",
