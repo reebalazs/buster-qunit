@@ -2,7 +2,6 @@ if (typeof module === "object" && typeof require === "function") {
     require("../lib/buster-qunit");
     var buster = require('buster');
 }
-
 buster.assertions.add('keys', {
     assert: function (actual, keys) {
         var keyMap = {};
@@ -24,6 +23,7 @@ buster.assertions.add('keys', {
     assertMessage: "Expected ${0} to have exact keys ${1}!",
     refuteMessage: "Expected ${0} not to have exact keys ${1}!"
 });
+
 
 buster.testCase('buster-qunit', {
 
@@ -126,8 +126,11 @@ buster.testCase('buster-qunit', {
         },
 
         '//makes proxied methods': function () {
+        },
+
+        '//processing': function () {
         }
-        
+
 
     }
 
