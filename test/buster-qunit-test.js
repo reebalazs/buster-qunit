@@ -123,8 +123,11 @@ buster.testCase('buster-qunit', {
             assert.equals(c.M.test1, 'PROXIED[T1]');
             assert.equals(c.M.test2, 'PROXIED[T2]');
             assert.equals(c.M.test3, 'PROXIED[T3]');
+        },
+
+        '//makes proxied methods': function () {
         }
- 
+        
 
     }
 
