@@ -146,6 +146,15 @@ buster.testCase('buster-qunit', {
 
     'assertion': {
 
+        '//ok': {
+        },
+
+        '//equal': {
+        },
+
+        '//deepEqual': {
+        },
+
         'raises': {
             '': function () {
                 var g = this.global;
@@ -169,6 +178,17 @@ buster.testCase('buster-qunit', {
             tearDown: function () {
                 this.exception.restore();
             }
+        }
+    },
+    'async': {
+
+        '//start': {
+        },
+
+        '//stop': {
+        },
+
+        '//expect': {
         }
 
     }
