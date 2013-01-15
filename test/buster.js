@@ -18,3 +18,28 @@ config.Browser = {
         'test/buster-qunit-test.js'
     ]
 };
+
+
+//
+// Running the reference example: eat our own dogfood.
+//
+
+var libs = [
+    'examples/testlib/jquery-1.6.2.min.js',
+    'examples/testlib/jquery.ui.widget.js'
+];
+
+var extensions = [require('../lib/extension.js')];
+
+config.Dogfood = {
+    rootPath: "../",
+    environment: "browser",
+    libs: libs,
+    extensions: extensions,
+    sources: [
+        'examples/source.js'
+    ],
+    tests: [
+        'examples/test.js'
+    ]
+};
