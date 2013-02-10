@@ -29,13 +29,14 @@ var libs = [
     'examples/testlib/jquery.ui.widget.js'
 ];
 
-var extensions = [require('../lib/extension.js')];
-
 config.Dogfood = {
     rootPath: "../",
     environment: "browser",
     libs: libs,
-    extensions: extensions,
+    extensions: [require('../lib/extension.js')],
+    busterQunit: {
+        html: 'test.html'
+    },
     sources: [
         'examples/source.js'
     ],

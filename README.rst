@@ -20,13 +20,27 @@ Usage
 
 You will need to create a ``buster.js`` configuration file for
 your qunit tests. The ``buster.js`` file in the ``examples``
-folder serves as a template. (XXX More explanation needed here.)
+folder serves as a template.
 
 To set up a QUnit test suite, the extension has to be selected from ``buster.js``::
 
-    ...
-    extensions : [require('buster-qunit')]
-    
+    config["the.example"] = {
+        rootPath: "../",
+        environment: "browser",
+        extensions: [require('buster-qunit')],     // select extension
+        'buster-qunit': {
+            html: 'examples/test.html'             // specify your QUnit test html
+        }
+    };
+
+
+Roadmap
+=======
+
+- loading tests from QUnit html (in progress)
+
+- add async support (start, stop, expect)
+
 
 Compatibility
 =============
@@ -43,10 +57,25 @@ Once this is done, the tests can be maintained in parallel between QUnit and ``b
 
 QUnit tests are run from a browser by visiting an HTML page, and this HTML contains ``<script>`` tags to load
 javascript. In buster, there is no such HTML, so the existing QUnit templates are of no use and currently
-not convertible to buster. The scripts have to be once manually defined from the ``buster.js``
-configuration file, as described in details by the buster documentation.
+not convertible to buster.
 
-(It would be possible to make a conversion tool for this step and the next one as well.)
+This is how you will run a QUnit test::
+
+    config["the.example"] = {
+        rootPath: "../",
+        environment: "browser",
+        extensions: [require('buster-qunit')],
+        'buster-qunit': {
+            html: 'examples/test.html'
+        }
+    };
+
+All the sources, libraries are mined out of the html you specify above.
+
+Remote loading is currently not supported. Load your resources manually into
+a local folder, and use them from there, relatively from the test html location.
+
+**THIS FEATURE IS IN PROGRESS!**
 
 
 2. HTML markup for tests

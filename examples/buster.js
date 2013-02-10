@@ -1,25 +1,12 @@
 
-
 var config = module.exports;
-
-var libs = [
-    'examples/testlib/jquery-1.6.2.min.js',
-    'examples/testlib/jquery.ui.widget.js'
-];
-
-var extensions = [require('../lib/extension.js')];
-
 
 config["the.example"] = {
     rootPath: "../",
     environment: "browser",
-    libs: libs,
-    extensions: extensions,
-    sources: [
-        'examples/source.js'
-    ],
-    tests: [
-        'examples/test.js'
-    ]
+    extensions: [require('../lib/extension.js')],
+    'buster-qunit': {
+        // specify html here
+        html: 'examples/test.html'
+    }
 };
-

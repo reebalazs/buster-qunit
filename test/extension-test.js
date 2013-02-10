@@ -4,6 +4,10 @@ var ext = require("../lib/extension");
 
 buster.testCase('buster-qunit extension', {
 
+    'defines name property': function () {
+        assert.equals(ext.name, 'buster-qunit');
+    },
+
     "adds bundle as framework": function (done) {
         var config = configuration.create();
         var group = config.addGroup("Some tests", {

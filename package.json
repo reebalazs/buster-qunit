@@ -15,7 +15,8 @@
         "url": "git://github.com/reebalazs/buster-qunit.git"
     },
     "dependencies": {
-        "buster": "*"
+        "buster": "*",
+        "htmlparser": "*"
     },
     "devDependencies": {
         "buster-configuration": "*"
