@@ -1,17 +1,12 @@
 
 module('the-example', {
-
+/*
     setup: function() {
-        var self = this;
-        $('#main').append(
-            '<div id="the-node">The Node Text</div>'
-        );
     },
 
     teardown: function() {
-        $('#main').empty();
     }
-
+*/
 });
 
 
