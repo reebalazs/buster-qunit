@@ -52,12 +52,13 @@ Right now, some preparation is necessary to make QUnit tests compatible with thi
 Once this is done, the tests can be maintained in parallel between QUnit and ``buster.js``.
 
 
-1. Defining which Javascript to load
-------------------------------------
+1. JavaScript resource loading
+------------------------------
 
 QUnit tests are run from a browser by visiting an HTML page, and this HTML contains ``<script>`` tags to load
-javascript. In buster, there is no such HTML, so the existing QUnit templates are of no use and currently
-not convertible to buster.
+javascript. In buster, there is no such HTML. It is the task of ``buster-qunit`` to determine
+which resources are requested by the HTML, and marshall their loading to the test
+configuration.
 
 This is how you will run a QUnit test::
 
@@ -70,38 +71,29 @@ This is how you will run a QUnit test::
         }
     };
 
-All the sources, libraries are mined out of the html you specify above.
+All the sources, libraries will be mined out of the html you specify above. You do not need
+to specify the ``sources``, ``tests`` or ``libs`` attributes from the configuration,
+as you would normally for a BusterJS test configuration,
+although if they are specified, the referred sources will be included in addition
+to the ones defined by the HTML.
 
-Remote loading is currently not supported. Load your resources manually into
-a local folder, and use them from there, relatively from the test html location.
+There are some restrictions which may be elevated in later versions:
+
+- Only local files with a path relative to this html can be loaded.
+  Remote loading is currently not supported. Load your resources manually into
+  a local folder, and use them from there, relatively from the test html location.
+
+- Embedded script tags are currently not processed.
+
+- CSS resources are not loaded. In te unlikely case that your test needed this,
+  you could use the setup and teardown to load them as needed.
 
 **THIS FEATURE IS IN PROGRESS!**
 
 
-2. HTML markup for tests
-------------------------
-
-In QUnit, there is a ``<div id="main" />`` tag in the template, which is acting as the testing sandbox. Its
-content stands at every test's disposition before they set up, and is guaranteed to clean up
-after they tear down.  In ``buster.js``, there is no such HTML, so the content of ``#main`` must be built up by
-javascript, from the setup method of the test module.
-
-The tests can assume however that ``#main`` exists and is empty, before any test runs.
-
-
-Missing
-=======
-
-1. Async not supported
+2. Async not supported
 ----------------------
 
 ``start()``, ``stop()`` and ``expect(n)`` are not implemented. For most cases, you can use sinon.js's mock
 timers for the purpose and avoid writing async tests, or, convert your async tests to such tests.
-
-
-2. Asserts
-----------
-
-Some QUnit asserts may be missing. We add them as we discover this.
-
 
