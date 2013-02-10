@@ -1,28 +1,26 @@
 
-============
-buster-qunit
-============
+
+# buster-qunit #
 
 An adapter to enable running QUnit tests from BusterJS.
 
-Installation
-============
 
-Use the ``npm`` package manager to install this package. Assuming
+## Installation ##
+
+Use the `npm` package manager to install this package. Assuming
 that you are in the same directory where this README file is
-located::
+located:
 
     % sudo npm install -g .
 
 
-Usage
-=====
+## Usage ##
 
-You will need to create a ``buster.js`` configuration file for
-your qunit tests. The ``buster.js`` file in the ``examples``
+You will need to create a `buster.js` configuration file for
+your qunit tests. The `buster.js` file in the `examples`
 folder serves as a template.
 
-To set up a QUnit test suite, the extension has to be selected from ``buster.js``::
+To set up a QUnit test suite, the extension has to be selected from `buster.js`:
 
     config["the.example"] = {
         rootPath: "../",
@@ -34,35 +32,33 @@ To set up a QUnit test suite, the extension has to be selected from ``buster.js`
     };
 
 All the test and library sources will be mined out of the html you specify above. You do not
-need to specify the ``sources``, ``tests`` or ``libs`` attributes from the configuration,
+need to specify the `sources`, `tests` or `libs` attributes from the configuration,
 as you would normally for a BusterJS test configuration,
 although if they are specified, the referred sources will be included in addition
 to the ones defined by the HTML.
 
 
-Roadmap
-=======
+## Roadmap ##
 
 - loading resources from QUnit HTML (in progress)
 
-- add async support (``start()``, ``stop()``, ``expect(n)``)
+- add async support (`start()`, `stop()`, `expect(n)`)
 
 
-Compatibility
-=============
+## Compatibility ##
 
-A desirable goal is to be able to run any pre-existing QUnit test transparently from BusterJS,
+It is our goal to be able to run any pre-existing QUnit test transparently from BusterJS,
 without any need to modify or prepare the QUnit tests.
 
-Right now, some preparation is necessary to make QUnit tests compatible with this adapter.
-Once this is done, the tests can be maintained in parallel between QUnit and BusterJS.
+Right now, in some cases, preparation is necessary to make QUnit tests 
+compatible with this adapter. Once this is done, the tests can be maintained as a single
+source, and run in both QUnit and BusterJS.
 
 
-1. JavaScript resource loading
-------------------------------
+### 1. JavaScript resource loading ###
 
-QUnit tests are run from a browser by visiting an HTML page, and this HTML contains ``<script>`` tags to load
-javascript. In BusterJS, there is no such HTML. It is the task of ``buster-qunit`` to determine
+QUnit tests are run from a browser by visiting an HTML page, and this HTML contains `<script>` tags to load
+javascript. In BusterJS, there is no such HTML. It is the task of `buster-qunit` to determine
 which resources are requested by the HTML, and marshall their loading to the test
 configuration.
 
@@ -80,10 +76,9 @@ There are some restrictions which may be elevated in later versions:
 **THIS FEATURE IS IN PROGRESS!**
 
 
-2. Async not supported
-----------------------
+### 2. Async not supported ###
 
-``start()``, ``stop()`` and ``expect(n)`` are not implemented. For most cases, you can use the 
+`start()`, `stop()` and `expect(n)` are not implemented. For most cases, you can use the 
 mock timers of SinonJS for the purpose and avoid writing async tests, or,
 convert your async tests to such tests.
 
