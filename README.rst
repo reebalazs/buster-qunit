@@ -3,7 +3,7 @@
 buster-qunit
 ============
 
-An adapter to enable running QUnit tests from buster.js.
+An adapter to enable running QUnit tests from BusterJS.
 
 Installation
 ============
@@ -33,49 +33,38 @@ To set up a QUnit test suite, the extension has to be selected from ``buster.js`
         }
     };
 
+All the test and library sources will be mined out of the html you specify above. You do not
+need to specify the ``sources``, ``tests`` or ``libs`` attributes from the configuration,
+as you would normally for a BusterJS test configuration,
+although if they are specified, the referred sources will be included in addition
+to the ones defined by the HTML.
+
 
 Roadmap
 =======
 
-- loading tests from QUnit html (in progress)
+- loading resources from QUnit HTML (in progress)
 
-- add async support (start, stop, expect)
+- add async support (``start()``, ``stop()``, ``expect(n)``)
 
 
 Compatibility
 =============
 
-A desirable goal would be to run any existing QUnit test transparently from ``buster.js``,
+A desirable goal is to be able to run any pre-existing QUnit test transparently from BusterJS,
 without any need to modify or prepare the QUnit tests.
 
 Right now, some preparation is necessary to make QUnit tests compatible with this adapter.
-Once this is done, the tests can be maintained in parallel between QUnit and ``buster.js``.
+Once this is done, the tests can be maintained in parallel between QUnit and BusterJS.
 
 
 1. JavaScript resource loading
 ------------------------------
 
 QUnit tests are run from a browser by visiting an HTML page, and this HTML contains ``<script>`` tags to load
-javascript. In buster, there is no such HTML. It is the task of ``buster-qunit`` to determine
+javascript. In BusterJS, there is no such HTML. It is the task of ``buster-qunit`` to determine
 which resources are requested by the HTML, and marshall their loading to the test
 configuration.
-
-This is how you will run a QUnit test::
-
-    config["the.example"] = {
-        rootPath: "../",
-        environment: "browser",
-        extensions: [require('buster-qunit')],
-        'buster-qunit': {
-            html: 'examples/test.html'
-        }
-    };
-
-All the sources, libraries will be mined out of the html you specify above. You do not need
-to specify the ``sources``, ``tests`` or ``libs`` attributes from the configuration,
-as you would normally for a BusterJS test configuration,
-although if they are specified, the referred sources will be included in addition
-to the ones defined by the HTML.
 
 There are some restrictions which may be elevated in later versions:
 
@@ -94,6 +83,7 @@ There are some restrictions which may be elevated in later versions:
 2. Async not supported
 ----------------------
 
-``start()``, ``stop()`` and ``expect(n)`` are not implemented. For most cases, you can use sinon.js's mock
-timers for the purpose and avoid writing async tests, or, convert your async tests to such tests.
+``start()``, ``stop()`` and ``expect(n)`` are not implemented. For most cases, you can use the 
+mock timers of SinonJS for the purpose and avoid writing async tests, or,
+convert your async tests to such tests.
 
