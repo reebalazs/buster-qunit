@@ -46,7 +46,7 @@ defined by the HTML.
 - add async support (`start()`, `stop()`, `expect(n)`)
 
 
-## Compatibility ##
+## Compatibility and restrictions ##
 
 It is our goal to be able to run any pre-existing QUnit test transparently
 from BusterJS, without any need to modify or prepare the QUnit tests.
