@@ -24,23 +24,11 @@ config.Browser = {
 // Running the reference example: eat our own dogfood.
 //
 
-var libs = [
-    'examples/testlib/jquery-1.6.2.min.js',
-    'examples/testlib/jquery.ui.widget.js'
-];
-
 config.Dogfood = {
     rootPath: "../",
     environment: "browser",
-    libs: libs,
     extensions: [require('../lib/extension.js')],
-    busterQunit: {
-        html: 'test.html'
-    },
-    sources: [
-        'examples/source.js'
-    ],
-    tests: [
-        'examples/test.js'
-    ]
+    'buster-qunit': {
+        html: 'examples/test.html'
+    }
 };
