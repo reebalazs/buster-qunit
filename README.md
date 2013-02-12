@@ -87,7 +87,8 @@ There are some restrictions which may be elevated in later versions:
 
 `start()`, `stop()` and `expect(n)` are not implemented. For most cases, you
 can use the mock timers and ajax of [SinonJS](http://sinonjs.org) and avoid
-the need for async tests.
+the need for async tests. (This means that you have to rewrite your async tests
+to sync, prior to running it with `buster-qunit`.)
 
 ### 3. Unsupported HTML problems ###
 
