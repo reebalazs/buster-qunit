@@ -21,7 +21,7 @@ resides:
 ## Usage ##
 
 You will need to create a `buster.js` configuration file for
-your qunit tests. The `buster.js` file in the `examples`
+your QUnit tests. The `buster.js` file in the `examples`
 folder serves as a template.
 
 To set up a QUnit test suite, the extension has to be selected from
