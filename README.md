@@ -7,11 +7,9 @@ from the [BusterJS](http://busterjs.org) JavaScript testing toolkit.
 
 ## Installation ##
 
-Use the `npm` package manager to install this package. Assuming
-that you are in the same directory where this README file is
-located:
+Use the `npm` package manager to install this package.
 
-    % sudo npm install -g .
+    % sudo npm install -g buster-qunit
 
 
 ## Usage ##
@@ -21,7 +19,8 @@ your qunit tests. The `buster.js` file in the `examples`
 folder serves as a template.
 
 To set up a QUnit test suite, the extension has to be selected from
-`buster.js`:
+`buster.js`. You also have to specify the HTML file that runs the Qunit
+tests, in the `html` attribute of the plugin configuration:
 
     config["the.example"] = {
         rootPath: "../",
