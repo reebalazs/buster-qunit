@@ -11,6 +11,12 @@ Use the `npm` package manager to install this package.
 
     % sudo npm install -g buster-qunit
 
+If you wish to install the development version instead of the latest
+release, you can do the following from the same directory where this README 
+resides:
+
+    % sudo npm install -g .
+
 
 ## Usage ##
 
