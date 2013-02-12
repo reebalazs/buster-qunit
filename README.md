@@ -84,3 +84,30 @@ There are some restrictions which may be elevated in later versions:
 can use the mock timers and ajax of [SinonJS](http://sinonjs.org) and avoid
 the need for async tests.
 
+### 3. Unsupported HTML problems ###
+
+There can be cases when the HTML fails in BusterJS while it was working in
+QUnit, due to different parsing. If you encounter such a case let us know,
+so we can fix and document it.
+
+#### 3.1 SCRIPT tags are filtered out ####
+
+The SCRIPT tags will be filtered out from the HTML, an if your code makes use
+of them, the tests will fail. For example the following will fail:
+
+    <script type="text/tmpl" id="joined_left">
+      <a href="{%= item.profile_url %}">{%= item.author %}</a>
+        {%= item.operation %}
+        Community <a href="{%= item.context_url %}">
+          {%= item.context_name %}
+        </a>.
+    </script>
+
+Other example that fails currently:
+
+    <script type="text/x-handlebars" data-template-name="application">
+        {{outlet}}
+    </script>
+
+This is a problem since various client templating systems use similar markup.
+I am looking for a solution to this problem.
