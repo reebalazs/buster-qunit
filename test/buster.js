@@ -1,12 +1,5 @@
 var config  = module.exports;
 
-config.Node = {
-    env: 'node',
-    tests: [
-        'extension-test.js',
-        'buster-qunit-test.js'
-    ]
-};
 
 config.Browser = {
     rootPath: '..',
@@ -31,4 +24,14 @@ config.Dogfood = {
     'buster-qunit': {
         html: 'examples/test.html'
     }
+};
+
+// XXX The node test must be after the browser tests,
+// this is a bug in BusterJS at the time of this writing???
+config.Node = {
+    env: 'node',
+    tests: [
+        'extension-test.js',
+        'buster-qunit-test.js'
+    ]
 };
