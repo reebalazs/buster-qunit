@@ -1,6 +1,6 @@
 
 
-# buster-qunit #
+# buster-qunit  #
 
 An adapter to enable running [QUnit](http://qunitjs.com) tests
 from the [BusterJS](http://busterjs.org) JavaScript testing toolkit.
